@@ -1,0 +1,70 @@
+
+<div class="card" style="width: 20rem;">
+    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+    <div class="card-body">
+        <ng-content select=".card-title"></ng-content>
+        <ng-content select=".card-text"></ng-content>
+        
+        <form #personForm="ngForm">
+            <div class="input-group">
+                <input required ngModel name="newPerson" type="text" class="form-control" placeholder="Imie">
+                <span class="input-group-btn">
+                    <button (click)="addPerson($event)" class="btn btn-secondary" type="button">Dodaj</button>
+                </span>
+            </div>
+            <div *ngIf="!personForm.controls.newPerson?.valid &amp;&amp; personForm.controls.newPerson?.touched" class="alert alert-primary">
+                niepoprawne
+            </div>
+
+            <div class="input-group">
+                <select class="form-control"  id="power"
+                    [class.input-error]="personForm.controls.selectedPerson?.invalid"
+                    required [(ngModel)]="selectedPerson" name="selectedPerson">
+                    <option *ngFor="let person of persons" [value]="person">{{person}}</option>
+                </select>
+                <span class="input-group-btn">
+                    <button (click)="clearSelected()" class="btn btn-secondary" type="button">Wyczyść</button>
+                </span>
+                {{personForm.controls.selectedPerson?.invalid}}
+            </div>
+            <!-- Valid: {{personForm.controls.newPerson?.valid}} -->
+            
+            <!-- {{newPerson}} -->
+            <!-- {{personForm | json}} -->
+        </form>
+            
+            <!-- <button 
+                class="btn btn-success"
+                [ngClass]="{
+                    'btn-prmary' :counterValue > 9,
+                    'btn-success':counterValue <=9
+                }"
+                (click)="counterInc()">+
+            </button>
+            
+            <span class="my-color">{{counterValue}}</span>
+            
+            <button s
+            class="btn btn-success"
+            (click)="counterDec()"
+            [disabled]="counterValue<=0">-
+        </button>
+        
+        <ng-container *ngIf="counterValue>9" class="alert alert-primary" rale="alert">
+            Za duża ilość
+        </ng-container>
+        
+        <div *ngIf="counterValue==0" class="alert alert-danger" rale="alert">
+            Za mało
+        </div> -->
+    </div>
+    
+    <ul class="list-group list-group-flush">
+        <li *ngFor="let person of persons" class="list-group-item">
+            {{person}}
+        </li>
+    </ul>
+</div>
+
+
+

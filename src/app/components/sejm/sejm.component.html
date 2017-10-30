@@ -1,0 +1,16 @@
+<div class="card" style="width: 20rem;">
+  <h4 class="card-header">
+    Nasz Sejm :)
+  </h4>
+  <p class="card-text">
+    To jest list naszych wspaniałych wybranków!
+  </p>
+    
+    <div class="card-body">
+    </div>
+    <ul class="list-group list-group-flush">
+      <li *ngFor="let moron of morons" class="list-group-item">
+          {{moron?.data["poslowie.nazwa"]}}
+      </li>
+    </ul>
+</div>

@@ -1,3 +1,4 @@
+import { CounterService } from './services/counter.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'app-gonia';
+  inne = 'to jest cos';
+
+  constructor (
+    public counterService: CounterService
+  ) {
+  }
+
+  incCounter() {
+    this.counterService.incValue();
+  }
+
+  show(form) {
+    console.log(form);
+  }
 }
